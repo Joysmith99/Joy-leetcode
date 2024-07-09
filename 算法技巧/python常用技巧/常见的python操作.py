@@ -202,5 +202,19 @@ str.swapcase()
 str.count('a')
 str.count('ab')  # 1
 
+### ============= TODO: collections 库的用法 ====================== ###
+# Leetcode中内置了collections，可以直接使用。
+# 声明：
+import collections
+## 双向队列
+deque = collections.deque()
+# 队列加入元素
+deque.append(lst)
+## 方法
+# 移除头部/尾部队列
+deque.popleft()
+deque.pop()
+
+
 
 
