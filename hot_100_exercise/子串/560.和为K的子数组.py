@@ -40,3 +40,30 @@ class Solution(object):
 
 # TODO: 
 # 正确思路为“前缀和”+“哈希表”
+# 前缀和可以定义为sums。举个例子，给定nums = [1,2,3,4,5]其前缀和数组sums=[1,1+2,1+2+3,1+2+3+4,1+2+3+4+5] = [1,3,6,10,15]
+class Solution2(object):
+    def subarraySum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        # 当数组前缀为[]时，sums为0，此时需要计数一个
+        dic={0:1}
+        # 定义前缀和，结果
+        sums,res=0,0
+
+        for num in nums:
+            # 计算每一步的前缀和
+            sums+=num
+            # 计算之前sum-k出现的次数，作为结果进行累加
+            res+=dic.get(sums-k,0)
+            # 对当前前缀和计数一个
+            dic[sums]=dic.get(sums,0)+1
+        return res
+
+# 思考：
+# 1.前缀和的性质：sums[j] - sums[i]即为区间（i，j]中的子数列的和
+# 2.什么时候使用前缀和：子串（子数列）的求和问题
+# 3.为什么前缀和常常与哈希表（字典）一起使用？因为需要记录先前的前缀的个数，就避免了BF，从而减少了时间复杂度
+# 4.该问题是否可以看做是另一种形式的 TODO:两数之和【是的】
