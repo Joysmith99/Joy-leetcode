@@ -206,7 +206,7 @@ str.count('ab')  # 1
 # Leetcode中内置了collections，可以直接使用。
 # 声明：
 import collections
-## 双向队列
+## 双向队列deque
 deque = collections.deque()
 # 队列加入元素
 deque.append(lst)
@@ -215,6 +215,17 @@ deque.append(lst)
 deque.popleft()
 deque.pop()
 
+## 计数器Counter()
+my_list = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+counter = collections.Counter(my_list)
+count_apples = counter['apple']  # 返回 'apple' 出现的次数
+counter.update(['orange', 'orange'])  # 增加 'orange' 的计数
+counter.subtract(['orange'])  # 减少 'orange' 的计数
+most_common = counter.most_common(1)  # 返回出现次数最多的元素及其计数
+
+counter1 = collections.Counter(['a', 'b', 'a'])
+counter2 = collections.Counter(['a', 'a', 'a'])
+are_equal = (counter1 == counter2)  # 比较两个 Counter 对象
 
 
 
