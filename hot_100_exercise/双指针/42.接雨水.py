@@ -1,6 +1,7 @@
+# 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+#####################################################################################
 
-
-
+# 第一种方式直接找出对应位置i的左右最大的left_max和right_max值
 class Solution(object):
     def trap(self, height):
         """
@@ -30,7 +31,8 @@ class Solution(object):
                 res += min(left_max, right_max) - height[i]
         
         return res
-    
+
+# 上面方式会进行多次重复计算 
 # 如何仅使用两个双指针呢？这样时间复杂度就大大降低了
 class Solution(object):
     def trap(self, height):
@@ -38,7 +40,7 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
-        # 定义：需要记录的值有四个：左右指针的位置，以及左右指针各自左右的最大值
+        # 定义变量：需要记录的值有四个：左右指针的位置，以及左右指针各自左右的最大值
         left ,right = 0, len(height)-1
         left_max, right_max = 0, 0
         # 定义结果
